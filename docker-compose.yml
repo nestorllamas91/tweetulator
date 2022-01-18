@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: tweetulator-app
+    depends_on:
+      - db
+    image: node:16.13.2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+      - .env.production
+    environment:
+      - MONGODB_USERNAME=$MONGODB_USERNAME
+      - MONGODB_PASSWORD=$MONGODB_PASSWORD
+      - MONGODB_HOSTNAME=$MONGODB_HOSTNAME
+      - MONGODB_PORT=$MONGODB_PORT
+      - MONGODB_DATABASE=$MONGODB_DATABASE
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    networks:
+      - tweetulator-network
+  db:
+    container_name: tweetulator-db
+    image: mongo:5.0.5
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    volumes:
+      - db-data:/data/db
+    networks:
+      - tweetulator-network
+
+volumes:
+  node_modules:
+  dbdata:
+
+networks:
+  tweetulator-network:
+    driver: bridge

@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  src: url(/assets/fonts/montserrat-semibold.ttf) format("truetype");
+  font-family: "Montserrat SemiBold";
+  font-weight: 600;
+}
+
+@font-face {
+  src: url(/assets/fonts/lato-regular.ttf) format("truetype");
+  font-family: "Lato Regular";
+  font-weight: 400;
+}
+
+@layer base {
+  *:focus {
+    @apply outline outline-2 outline-offset-1 outline-slate-300;
+  }
+
+  html,
+  body,
+  #__next {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-white;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-heading font-semibold text-slate-800;
+  }
+
+  h1 {
+    @apply text-2xl mq1:text-2xl mq2:text-3xl mq3:text-3xl;
+  }
+
+  h2 {
+    @apply text-xl mq1:text-xl mq2:text-2xl mq3:text-2xl;
+  }
+
+  h3 {
+    @apply text-lg mq1:text-lg mq2:text-xl mq3:text-xl;
+  }
+
+  p,
+  span,
+  ul,
+  ol,
+  li,
+  label,
+  input,
+  button,
+  a {
+    @apply font-body font-normal text-xs text-slate-800 mq2:text-sm mq3:text-base;
+  }
+
+  p {
+    @apply mb-1;
+  }
+
+  ul,
+  ol {
+    @apply list-inside;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  a {
+    @apply text-blue-600 hover:underline hover:decoration-solid;
+  }
+}
