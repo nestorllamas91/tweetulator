@@ -7,4 +7,3 @@ COPY . ./home/node/app
 RUN npm run build:prod
 EXPOSE 8080
 CMD ["npm", "run", "start:prod"]
-//
