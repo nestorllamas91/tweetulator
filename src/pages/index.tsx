@@ -11,7 +11,7 @@ import Tweets from "@/tweets/component";
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const url =
     process.env.NODE_ENV === "production"
-      ? "https://tweetulator-nestorllamas91.herokuapp.com/"
+      ? "https://tweetulator-nestorllamas91.herokuapp.com/api/tweets/"
       : "http://localhost:8080/api/tweets/";
   const tweetsResponse = await fetch(url, { method: "GET" });
   const tweets: TweetModelType[] = await tweetsResponse.json();
@@ -40,7 +40,7 @@ const DiscussionPage = ({ tweets, statusCode }: DiscussionPageProps): JSX.Elemen
     try {
       const url =
         process.env.NODE_ENV === "production"
-          ? "https://tweetulator-nestorllamas91.herokuapp.com/"
+          ? "https://tweetulator-nestorllamas91.herokuapp.com/api/tweets/"
           : "http://localhost:8080/api/tweets/";
       await fetch(url, { method: "DELETE" });
       updateTweetsTreeDOM([]);

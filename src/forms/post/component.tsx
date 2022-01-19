@@ -13,7 +13,7 @@ const PostForm = ({ updateTweetsTreeDOM }: PostFormProps): JSX.Element => {
       e.preventDefault();
       const url =
         process.env.NODE_ENV === "production"
-          ? "https://tweetulator-nestorllamas91.herokuapp.com/"
+          ? "https://tweetulator-nestorllamas91.herokuapp.com/api/tweets/"
           : "http://localhost:8080/api/tweets/";
       const res = await fetch(url, {
         method: "POST",
