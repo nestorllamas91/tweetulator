@@ -23,15 +23,26 @@ const CommentForm = ({ parentTweet, updateTweetsTreeDOM, closeCommentForm }: Com
   useEffect(() => {
     updateViewport();
     window.addEventListener("resize", updateViewport);
-    return () => window.removeEventListener("resize", updateViewport);
+    window.addEventListener("keydown", handleEscapeKey);
+    return () => {
+      window.removeEventListener("resize", updateViewport);
+      window.removeEventListener("keydown", handleEscapeKey);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const updateViewport = () => setViewport({ width: window.innerWidth, height: window.innerHeight });
+  const updateViewport = () => {
+    setViewport({ width: window.innerWidth, height: window.innerHeight });
+  };
+
+  const handleEscapeKey = (event: KeyboardEvent) => {
+    if (event.key === "Escape") closeCommentForm();
+  };
 
   const submitForm = async (e: FormEvent<HTMLFormElement>) => {
     try {
       e.preventDefault();
-      const res = await fetch(`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/tweets/`, {
+      const res = await fetch(`http://localhost:${process.env.NEXT_PUBLIC_EXPRESS_PORT}/api/tweets/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

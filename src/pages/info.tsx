@@ -167,7 +167,7 @@ const Infrastructure = () => (
         <span className="font-bold">Hostings</span>: Heroku (application), MongoDB Atlas (database).
       </li>
       <li>
-        <span className="font-bold">Version control</span>: Git, GitHub.
+        <span className="font-bold">Version control</span>: Git, GitHub, GitHub Actions.
       </li>
       <li>
         <span className="font-bold">Container engine</span>: Docker, Docker Compose.

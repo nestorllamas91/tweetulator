@@ -17,10 +17,9 @@ import tweetRouter from "@/tweets/router";
     server.use((err: any, req: Request, res: Response, next: NextFunction) => res.status(err.status).send(err));
     const handle = app.getRequestHandler();
     server.all("*", (req: Request, res: Response) => handle(req, res));
-    const mongodbUri = `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_HOSTNAME}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DATABASE}?authSource=admin`;
-    await mongoose.connect(mongodbUri);
-    const port = Number.parseInt(<string>process.env.NEXT_PUBLIC_PORT, 10) || 8080;
-    server.listen(port, () => console.log(`App started on http://localhost:${process.env.NEXT_PUBLIC_PORT}`));
+    await mongoose.connect(`mongodb://${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}`);
+    const port = Number.parseInt(<string>process.env.NEXT_PUBLIC_EXPRESS_PORT, 10) || 8080;
+    server.listen(port, () => console.log(`App started on http://localhost:${process.env.NEXT_PUBLIC_EXPRESS_PORT}`));
   } catch (e) {
     console.error(e);
     process.exit(1);

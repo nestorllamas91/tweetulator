@@ -14,10 +14,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "rootDir": "./src/",
-    "outDir": "./.build/next/",
     "baseUrl": "./",
-    "paths": { "@/*": ["src/*", ".build/express/*"] }
+    "paths": { "@/*": ["src/*", "dist/*"] }
   },
   "include": ["./src/app.ts", "./src/pages/**/*.tsx", "./src/**/component.tsx", "./src/**/types.ts", "next-env.d.ts"],
   "exclude": ["./node_modules/"]

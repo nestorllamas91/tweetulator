@@ -1,38 +1,28 @@
 services:
-  app:
-    container_name: tweetulator-app
-    depends_on:
-      - db
+  app-service:
     image: node:16.13.2
+    depends_on:
+      - db-service
     build:
       context: .
       dockerfile: Dockerfile
-    restart: unless-stopped
     ports:
-      - "80:8080"
-    env_file:
-      - .env
-      - .env.production
+      - "8080:8080"
     environment:
-      - MONGODB_USERNAME=$_MONGODB_USERNAME
-      - MONGODB_PASSWORD=$_MONGODB_PASSWORD
-      - MONGODB_HOSTNAME=$_MONGODB_HOSTNAME
-      - MONGODB_PORT=$_MONGODB_PORT
-      - MONGODB_DATABASE=$_MONGODB_DATABASE
+      - NODE_ENV=production
+      - NEXT_PUBLIC_EXPRESS_PORT=$NEXT_PUBLIC_EXPRESS_PORT
+      - MONGO_HOSTNAME=db-service
+      - MONGO_PORT=$MONGO_PORT
+      - MONGO_DB=$MONGO_DB
     volumes:
       - .:/app
       - node_modules:/app/node_modules
     networks:
       - tweetulator-network
-  db:
-    container_name: tweetulator-db
+  db-service:
     image: mongo:5.0.5
-    restart: unless-stopped
     ports:
       - "27017:27017"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=$_MONGODB_USERNAME
-      - MONGO_INITDB_ROOT_PASSWORD=$_MONGODB_PASSWORD
     volumes:
       - db-data:/data/db
     networks:
