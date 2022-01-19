@@ -23,7 +23,7 @@
     "lint:code": "next lint --fix --dir ./src/",
     "lint:types": "tsc --noEmit --project tsconfig.json && tsc --noEmit --project tsconfig.server.json",
     "format": "prettier --write .",
-    "build": "npm run build:prod",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm i && npm run build:prod",
     "start": "npm run start:prod"
   },
   "dependencies": {
