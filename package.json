@@ -23,7 +23,8 @@
     "lint:code": "next lint --fix --dir ./src/",
     "lint:types": "tsc --noEmit --project tsconfig.json && tsc --noEmit --project tsconfig.server.json",
     "format": "prettier --write .",
-    "build": "npm run build:prod",
+    "tsc": "tsc --project tsconfig.server.json",
+    "build": "next build && npm run tsc",
     "start": "npm run start:prod"
   },
   "dependencies": {
