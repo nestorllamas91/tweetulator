@@ -19,8 +19,8 @@ import tweetRouter from "@/tweets/router";
     server.all("*", (req: Request, res: Response) => handle(req, res));
     await mongoose.connect(`mongodb+srv://root:4h7*$5D&8j4y@cluster0.ik09c.mongodb.net/tweetulator`);
     // await mongoose.connect(`mongodb://${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}`);
-    const port = Number.parseInt(<string>process.env.NEXT_PUBLIC_EXPRESS_PORT, 10) || 8080;
-    server.listen(port, () => console.log(`App started on http://localhost:${process.env.NEXT_PUBLIC_EXPRESS_PORT}`));
+    const port = Number.parseInt(<string>process.env.PORT, 10);
+    server.listen(port, () => console.log(`App started on http://localhost:${process.env.PORT}`));
   } catch (e) {
     console.error(e);
     process.exit(1);

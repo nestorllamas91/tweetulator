@@ -10,7 +10,7 @@ services:
       - "8080:8080"
     environment:
       - NODE_ENV=production
-      - NEXT_PUBLIC_EXPRESS_PORT=$NEXT_PUBLIC_EXPRESS_PORT
+      - NEXT_PUBLIC_PORT=$NEXT_PUBLIC_PORT
       - MONGO_HOSTNAME=db-service
       - MONGO_PORT=$MONGO_PORT
       - MONGO_DB=$MONGO_DB

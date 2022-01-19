@@ -9,7 +9,7 @@ import type { ActionButtonProps, DiscussionPageProps, TweetModelType, TweetType 
 import Tweets from "@/tweets/component";
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const tweetsResponse = await fetch(`http://localhost:${process.env.NEXT_PUBLIC_EXPRESS_PORT}/api/tweets/`, {
+  const tweetsResponse = await fetch(`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/tweets/`, {
     method: "GET",
   });
   const tweets: TweetModelType[] = await tweetsResponse.json();
@@ -36,7 +36,7 @@ const DiscussionPage = ({ tweets, statusCode }: DiscussionPageProps): JSX.Elemen
 
   const deleteTweets = async () => {
     try {
-      await fetch(`http://localhost:${process.env.NEXT_PUBLIC_EXPRESS_PORT}/api/tweets/`, { method: "DELETE" });
+      await fetch(`http://localhost:${process.env.NEXT_PUBLIC_PORT}/api/tweets/`, { method: "DELETE" });
       updateTweetsTreeDOM([]);
     } catch (e: any) {
       router.push("/500");
