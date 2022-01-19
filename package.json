@@ -23,7 +23,7 @@
     "lint:code": "next lint --fix --dir ./src/",
     "lint:types": "tsc --noEmit --project tsconfig.json && tsc --noEmit --project tsconfig.server.json",
     "format": "prettier --write .",
-    "build": "build:frontend && npm run build:backend",
+    "build": "npm run build:frontend && npm run build:backend",
     "build:frontend": "next build",
     "build:backend": "tsc --project tsconfig.server.json",
     "start": "node --require tsconfig-paths/register ./dist/src/app.js"
