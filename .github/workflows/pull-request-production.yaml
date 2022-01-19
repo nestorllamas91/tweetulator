@@ -1,4 +1,4 @@
-name: Pull Request to Production
+name: Pull Request to From Development to Production
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   pull-request-production:
-    name: Pull Request to Production
+    name: Pull Request from Development to Production
     runs-on: ubuntu-20.04
     steps:
       - name: Check out the branch of the repository where this workflow is being executed for the runner to use it.
