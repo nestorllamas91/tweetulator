@@ -17,9 +17,9 @@
   },
   "scripts": {
     "build:dev": "tsc --watch --project tsconfig.server.json",
-    "start:dev": "nodemon --require tsconfig-paths/register ./dist/app.js",
+    "start:dev": "nodemon --require tsconfig-paths/register ./dist/src/app.js",
     "build:prod": "next build && tsc --project tsconfig.server.json",
-    "start:prod": "node --require tsconfig-paths/register ./dist/app.js",
+    "start:prod": "node --require tsconfig-paths/register ./dist/src/app.js",
     "lint:code": "next lint --fix --dir ./src/",
     "lint:types": "tsc --noEmit --project tsconfig.json && tsc --noEmit --project tsconfig.server.json",
     "format": "prettier --write .",

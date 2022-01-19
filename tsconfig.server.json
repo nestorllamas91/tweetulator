@@ -3,7 +3,7 @@
   "compilerOptions": {
     "noEmit": false,
     "module": "commonjs",
-    "rootDir": "./src/",
+    "rootDir": "./",
     "outDir": "./dist/"
   },
   "include": ["./src/app.ts", "./src/**/router.ts", "./src/**/controller.ts", "./src/**/model.ts"]
