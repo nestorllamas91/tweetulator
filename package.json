@@ -22,7 +22,9 @@
     "start:prod": "node --require tsconfig-paths/register ./dist/app.js",
     "lint:code": "next lint --fix --dir ./src/",
     "lint:types": "tsc --noEmit --project tsconfig.json && tsc --noEmit --project tsconfig.server.json",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "build": "npm run build:prod",
+    "start": "npm run start:prod"
   },
   "dependencies": {
     "express": "4.17.2",
