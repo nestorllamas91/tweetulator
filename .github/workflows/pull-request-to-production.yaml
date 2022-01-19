@@ -1,4 +1,4 @@
-name: Pull Request to From Development to Production
+name: Pull Request From Development to Production
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  pull-request-production:
+  pull-request-to-production:
     name: Pull Request from Development to Production
     runs-on: ubuntu-20.04
     steps:
