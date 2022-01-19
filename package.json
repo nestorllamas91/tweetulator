@@ -23,9 +23,10 @@
     "lint:code": "next lint --fix --dir ./src/",
     "lint:types": "tsc --noEmit --project tsconfig.json && tsc --noEmit --project tsconfig.server.json",
     "format": "prettier --write .",
-    "tsc": "tsc --project tsconfig.server.json",
-    "build": "next build && npm run tsc",
-    "start": "npm run start:prod"
+    "build": "build:frontend && npm run build:backend",
+    "build:frontend": "next build",
+    "build:backend": "tsc --project tsconfig.server.json",
+    "start": "node --require tsconfig-paths/register ./dist/src/app.js"
   },
   "dependencies": {
     "express": "4.17.2",

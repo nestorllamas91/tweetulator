@@ -17,10 +17,11 @@ import tweetRouter from "@/tweets/router";
     server.use((err: any, req: Request, res: Response, next: NextFunction) => res.status(err.status).send(err));
     const handle = app.getRequestHandler();
     server.all("*", (req: Request, res: Response) => handle(req, res));
-    await mongoose.connect(`mongodb+srv://root:4h7*$5D&8j4y@cluster0.ik09c.mongodb.net/tweetulator`);
-    // await mongoose.connect(`mongodb://${process.env.MONGO_HOSTNAME}:${process.env.MONGO_PORT}/${process.env.MONGO_DB}`);
-    const port = Number.parseInt(<string>process.env.PORT, 10);
-    server.listen(port, () => console.log(`App started on http://localhost:${process.env.PORT}`));
+    // const mongoDbUri = "mongodb://db-service:27017/tweetulator";
+    const mongoDbUri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.ik09c.mongodb.net/tweetulator`;
+    await mongoose.connect(mongoDbUri);
+    const port = Number.parseInt(<string>process.env.PORT, 10) || 8080;
+    server.listen(port, () => console.log(`App started on http://localhost:${port}`));
   } catch (e) {
     console.error(e);
     process.exit(1);

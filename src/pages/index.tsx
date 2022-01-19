@@ -9,9 +9,11 @@ import type { ActionButtonProps, DiscussionPageProps, TweetModelType, TweetType 
 import Tweets from "@/tweets/component";
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  const tweetsResponse = await fetch(`http://localhost:${process.env.PORT}/api/tweets/`, {
-    method: "GET",
-  });
+  const url =
+    process.env.NODE_ENV === "production"
+      ? "https://tweetulator-nestorllamas91.herokuapp.com/"
+      : "http://localhost:8080/api/tweets/";
+  const tweetsResponse = await fetch(url, { method: "GET" });
   const tweets: TweetModelType[] = await tweetsResponse.json();
   const tweetsFixed: TweetType[] | null = tweets ? getTweetsFixed(tweets) : null;
   const statusCode = tweetsResponse.status;
@@ -36,7 +38,11 @@ const DiscussionPage = ({ tweets, statusCode }: DiscussionPageProps): JSX.Elemen
 
   const deleteTweets = async () => {
     try {
-      await fetch(`http://localhost:${process.env.PORT}/api/tweets/`, { method: "DELETE" });
+      const url =
+        process.env.NODE_ENV === "production"
+          ? "https://tweetulator-nestorllamas91.herokuapp.com/"
+          : "http://localhost:8080/api/tweets/";
+      await fetch(url, { method: "DELETE" });
       updateTweetsTreeDOM([]);
     } catch (e: any) {
       router.push("/500");
