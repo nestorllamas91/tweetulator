@@ -272,11 +272,12 @@ const Details = () => (
         All the images used are in SVG format and optimized with the SVGO tool. They are used in the web application
         with the inline &lt;svg&gt; element, which renders them fast when loading the website.
       </li>
-      <li>For linting the code of the application, that is, fixing it, it has been used ESLint.</li>
+      <li>For linting the source code of the application, that is, fixing it, it has been used ESLint.</li>
       <li>
-        For linting the TypeScript types of the code of the application it has been used the TypeScript compiler (tsc).
+        For linting the TypeScript types of the source code of the application it has been used the TypeScript compiler
+        (tsc).
       </li>
-      <li>For giving format to the code of the application it has been used Prettier.</li>
+      <li>For giving format to the source code of the application it has been used Prettier.</li>
       <li>
         For compiling the frontend (Next.js with TypeScript) it has been used the Next.js compiler, which under the hood
         uses the Speedy Web Compiler (SWC).

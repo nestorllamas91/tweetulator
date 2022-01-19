@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   app:
     container_name: tweetulator-app
@@ -11,19 +9,19 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "8080:8080"
+      - "80:8080"
     env_file:
       - .env
       - .env.production
     environment:
-      - MONGODB_USERNAME=$MONGODB_USERNAME
-      - MONGODB_PASSWORD=$MONGODB_PASSWORD
-      - MONGODB_HOSTNAME=$MONGODB_HOSTNAME
-      - MONGODB_PORT=$MONGODB_PORT
-      - MONGODB_DATABASE=$MONGODB_DATABASE
+      - MONGODB_USERNAME=$_MONGODB_USERNAME
+      - MONGODB_PASSWORD=$_MONGODB_PASSWORD
+      - MONGODB_HOSTNAME=$_MONGODB_HOSTNAME
+      - MONGODB_PORT=$_MONGODB_PORT
+      - MONGODB_DATABASE=$_MONGODB_DATABASE
     volumes:
-      - .:/home/node/app
-      - node_modules:/home/node/app/node_modules
+      - .:/app
+      - node_modules:/app/node_modules
     networks:
       - tweetulator-network
   db:
@@ -33,8 +31,8 @@ services:
     ports:
       - "27017:27017"
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USERNAME
-      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+      - MONGO_INITDB_ROOT_USERNAME=$_MONGODB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$_MONGODB_PASSWORD
     volumes:
       - db-data:/data/db
     networks:
@@ -42,7 +40,9 @@ services:
 
 volumes:
   node_modules:
-  dbdata:
+    driver: local
+  db-data:
+    driver: local
 
 networks:
   tweetulator-network:
