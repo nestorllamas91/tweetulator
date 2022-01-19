@@ -3,7 +3,8 @@
   "compilerOptions": {
     "noEmit": false,
     "module": "commonjs",
-    "outDir": "./.build/express/"
+    "rootDir": "./src/",
+    "outDir": "./dist/"
   },
   "include": ["./src/app.ts", "./src/**/router.ts", "./src/**/controller.ts", "./src/**/model.ts"]
 }
